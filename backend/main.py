@@ -24,7 +24,7 @@ def route(path):
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name, template_folder='../frontend')
+    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, template_folder='../frontend')
 
 
 
