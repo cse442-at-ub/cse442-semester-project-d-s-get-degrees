@@ -32,7 +32,7 @@
   <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h2>Registration</h2>
-    <p class="lead">Welcome to <a class="h4" href="index.html"><b>UBEsport</b></a>.</p>
+    <p class="lead">Welcome to <a class="h4" href="index"><b>UBEsport</b></a>.</p>
   </div>
 
   <div >
@@ -44,15 +44,23 @@
               <div class="p-3 mb-2 bg-danger text-white">{{ messages[0] }}</div>
         {% endif %}
         {% endwith %}
+
         <div class="mb-3">
-          <label for="username">Username</label>
+          <label for="firstName">First Name</label>
           <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" name="name"  placeholder="Username" required>
+            <input type="text" class="form-control" id="firstName" name="firstName"  placeholder="Your First Name" required>
             <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
+              Your first name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName">Last Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="lastName" name="lastName"  placeholder="Your Last Name" required>
+            <div class="invalid-feedback" style="width: 100%;">
+              Your last name is required.
             </div>
           </div>
         </div>
@@ -79,7 +87,7 @@
 
 
         <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
-        <a class="btn btn-secondary btn-block" href="login.html" >Already have an account? Sign in</a>
+        <a class="btn btn-secondary btn-block" href="login" >Already have an account? Sign in</a>
       </form>
     </div>
   </div>
