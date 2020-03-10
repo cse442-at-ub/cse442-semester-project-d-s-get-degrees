@@ -1,7 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Events</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript" src="../js/events.js"></script>
+    <script>
+      function attend(id) {
+          var innerText = document.getElementById(id).innerHTML;
+          if(innerText === "Go to This Event") {
+              document.getElementById(id).innerHTML = "Going";
+          }
+
+          if(innerText === "Going") {
+              document.getElementById(id).innerHTML = "Go to This Event";
+          }
+      }
+    </script>
+  </head>
+  <body>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -16,6 +54,7 @@
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                  <button id="event-0" onclick="attend('event-0')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
@@ -35,6 +74,7 @@
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                    <button id="event-1" onclick="attend('event-1')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
                   </div>
                   <small class="text-muted">9 mins</small>
                 </div>
@@ -54,6 +94,7 @@
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                    <button id="event-2" onclick="attend('event-2')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
                   </div>
                   <small class="text-muted">9 mins</small>
                 </div>
