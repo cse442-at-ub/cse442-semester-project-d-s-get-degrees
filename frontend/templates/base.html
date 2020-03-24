@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sticky-footer/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <a class="my-0 mr-md-auto font-weight-normal h5" href="/"><b>UB Esport</b></a>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="blog">Blog</a>
+          <a class="p-2 text-dark" href="clubs">Clubs</a>
+          <a class="p-2 text-dark" href="events">Events</a>
+          <a class="p-2 text-dark" href="teams">Teams</a>
+            {% if current_user.is_authenticated %}
+                     <a class="p-2 text-dark" href="profile">Profile</a>
+            {% endif %}
+        </nav>
+        {% if not current_user.is_authenticated %}
+        <a class="btn btn-outline-primary" href="login">Login</a>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-primary">Logout</a>
+        {% endif %}
+      </div>
+    <main role="main">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="page-footer font-small blue pt-4">
+
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+            <!-- Content -->
+            <h5 class="text-uppercase">University at Buffalo Esports</h5>
+            <div class="row">
+              <img src="images/Email.png" width="30" height="30">
+              <p>ubuffalo.esports@gmail.com</p>
+            </div>
+          </div>
+          <!-- Grid column -->
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+            <!-- Links -->
+            <ul class="list-unstyled">
+              <li>
+                <a href="blog" style="color:black">Blog</a>
+              </li>
+              <li>
+                <a href="clubs" style="color:black">Clubs</a>
+              </li>
+              <li>
+                <a href="events" style="color:black">Events</a>
+              </li>
+              <li>
+                <a href="teams" style="color:black">Teams</a>
+              </li>
+            </ul>
+    
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#" style="color:black"> University at Buffalo Esports</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+</body>
+</html>

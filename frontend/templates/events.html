@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Events</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+    <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript" src="../js/events.js"></script>
+    <script>
+      function attend(id) {
+          var innerText = document.getElementById(id).innerHTML;
+          if(innerText === "Go to This Event") {
+              document.getElementById(id).innerHTML = "Going";
+          }
+
+          if(innerText === "Going") {
+              document.getElementById(id).innerHTML = "Go to This Event";
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/apex/1.jpg" 
+            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
+            fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
+            <div class="card-body">
+            <h2>Event</h2>
+              <p class="card-text">Event Detail.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                  <button id="event-0" onclick="attend('event-0')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/lol/1.jpg" 
+              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
+              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
+              <div class="card-body">
+              <h2>Event</h2>
+                <p class="card-text">Event Detail.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                    <button id="event-1" onclick="attend('event-1')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/csgo/1.jpg" 
+              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
+              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
+              <div class="card-body">
+              <h2>Event</h2>
+                <p class="card-text">Event Detail.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+                    <button id="event-2" onclick="attend('event-2')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+     
+
+      </div>
+    </div>
+{% endblock %}

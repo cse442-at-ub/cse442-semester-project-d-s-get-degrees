@@ -1,23 +1,32 @@
-from backend.modules import app
-from flask import render_template
+from flask import Blueprint, render_template, send_from_directory
+from flask_login import login_required, current_user
+main = Blueprint('main', __name__)
 
-@app.route("/")
+
+@main.route("/")
 def index():
     return render_template("index.html")
 
-
-@app.route("/profile")
-def index():
-    return render_template("profile.html")
-
-@app.route("/home")
-def index():
-    return render_template("home.html")
+@main.route('/css/<path:path>')
+def send_js(path):
+    return send_from_directory('../frontend/css', path)
 
 
-@app.route("/admin")
-def index():
-    return render_template("admin.html")
+@main.route('/images/<path:path>')
+def send_images(path):
+    return send_from_directory('../frontend/images', path)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+@main.route("/<path:path>")
+def route(path):
+    return render_template(path+".html", template_folder='../frontend')
+
+@main.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, template_folder='../frontend')
+
+
+
+
+
