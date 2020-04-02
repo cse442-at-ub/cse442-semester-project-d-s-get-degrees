@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from backend.modules.user import User
+from backend.modules.event import Event
 from .. import db
 
 auth = Blueprint('auth', __name__)
@@ -57,3 +58,9 @@ def signup_post():
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
+
+
+@auth.route('/events', methods=['GET'])
+def events():
+    event = Event.query.all()
+    return render_template('events.html', event=event)
