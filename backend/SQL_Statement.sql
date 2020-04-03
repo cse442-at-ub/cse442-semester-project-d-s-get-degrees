@@ -5,14 +5,14 @@ CREATE TABLE User (
     LastName varchar(255) NOT NULL,
     FirstName varchar(255) NOT NULL,
     Email varchar(255) NOT NULL,
-    ProfilePic BLOB
+    ProfilePic varchar(255)
 )
 
 CREATE TABLE Event (
     ID INTEGER PRIMARY KEY,
     Title VARCHAR(255) NOT NULL,
     Description VARCHAR(255),
-    EventImage BLOB
+    Image VARCHAR(255)
 )
 
 CREATE TABLE User_Event (
