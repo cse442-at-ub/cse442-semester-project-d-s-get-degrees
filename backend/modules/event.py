@@ -1,5 +1,6 @@
 from sqlalchemy import Column
-from  backend import db
+from backend import db
+
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key = True)

@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 from backend.modules.user import User
 from backend.modules.event import Event
-from backend.modules.user_event import User_Event
+from backend.modules.userEvent import UserEvent
 from .. import db
 from flask.json import jsonify
 
@@ -62,17 +62,35 @@ def logout():
     return redirect(url_for('main.index'))
 
 
-@auth.route('/events', methods=['GET'])
+@auth.route('/events', methods=['GET', 'POST'])
 def events():
-    event = Event.query.all()
-    return render_template('events.html', event=event)
+    if request.method == 'POST':
 
-@auth.route('/events', methods=['POST'])
-def attend():
-    eventID = request.form['eventID']
-    userID = current_user.get_id()
+        eventID = request.json['eventID']
+        userID = current_user.get_id()
 
-    new_user_event = User_Event(None, userID, eventID)
-    db.session.add(new_user_event)
-    db.session.commit()
-    return jsonify({'message' : 'success'})
+        print('\n')
+        print('POST REQUEST VALUES:')
+        print('eventID : ' + eventID)
+        print('userID : ' + userID)
+        print('\n')
+
+        # if userEvent exists in database, remove it; else, add it.
+        userEvent = UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).first()
+        db.session.rollback()
+
+        print(userEvent)
+
+        if userEvent:
+            UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).delete()
+            db.session.commit()
+            return jsonify({'message' : 'success'})
+        else:
+            newUserEvent = UserEvent(userID, eventID)
+            db.session.add(newUserEvent)
+            db.session.commit()
+            return jsonify({'message' : 'success'})
+
+    else: # if request.method == 'GET'
+        event = Event.query.all()
+        return render_template('events.html', event=event)
