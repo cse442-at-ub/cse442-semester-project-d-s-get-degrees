@@ -93,4 +93,6 @@ def events():
 
     else: # if request.method == 'GET'
         event = Event.query.all()
-        return render_template('events.html', event=event)
+        userEvent = UserEvent.query.filter_by(userID = current_user.get_id())
+
+        return render_template('events.html', event=event, userEvent = userEvent, otherButton = True)
