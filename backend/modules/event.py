@@ -1,4 +1,3 @@
-from sqlalchemy.dialects.sqlite import BLOB
 from sqlalchemy import Column
 from  backend import db
 

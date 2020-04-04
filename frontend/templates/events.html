@@ -27,16 +27,45 @@
     </style>
     <script type="text/javascript" src="../js/events.js"></script>
     <script>
+
       function attend(id) {
+        $(document).ready(function() {
+
+          $('form').on('submit', function(event) {
+
+            $.ajax({
+              data : { 
+                eventID : id
+              },
+              type : 'POST',
+              url : '/events'
+            })
+            .done(function(data) {
+
+              if(data.message === 'success') {
+
+              }
+
+              else {
+                console.log('Error, unsuccessful post request')
+              }
+
+            });
+            event.preventDefault();
+
+          });
+
           var innerText = document.getElementById(id).innerHTML;
           if(innerText === "Go to This Event") {
-              document.getElementById(id).innerHTML = "Going";
+          document.getElementById(id).innerHTML = "Going";
           }
 
           if(innerText === "Going") {
-              document.getElementById(id).innerHTML = "Go to This Event";
+          document.getElementById(id).innerHTML = "Go to This Event";
           }
+        });
       }
+      
     </script>
   </head>
   <body>
@@ -55,7 +84,9 @@
               <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
               {% if current_user.is_authenticated %}
               <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-              <button id="event-0" onclick="attend('event-0')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+              <form action="" method="post">
+                <button id="{{ e.id }}" onclick="attend('{{ e.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+              </form>
               {% endif %}
             </div>
             <small class="text-muted">9 mins</small>

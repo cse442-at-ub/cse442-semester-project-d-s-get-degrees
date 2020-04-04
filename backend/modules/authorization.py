@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from backend.modules.user import User
 from backend.modules.event import Event
+from backend.modules.user_event import User_Event
 from .. import db
+from flask.json import jsonify
 
 auth = Blueprint('auth', __name__)
 
@@ -64,3 +66,13 @@ def logout():
 def events():
     event = Event.query.all()
     return render_template('events.html', event=event)
+
+@auth.route('/events', methods=['POST'])
+def attend():
+    eventID = request.form['eventID']
+    userID = current_user.get_id()
+
+    new_user_event = User_Event(None, userID, eventID)
+    db.session.add(new_user_event)
+    db.session.commit()
+    return jsonify({'message' : 'success'})
