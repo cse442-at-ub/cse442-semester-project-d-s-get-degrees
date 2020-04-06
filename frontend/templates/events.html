@@ -70,19 +70,21 @@
               {% if current_user.is_authenticated %}
               <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
 
+                {% set ns = namespace(goto=true) %}
+
                 {% for ue in userEvent%}
 
                   {% if ue.eventID == e.id %}
                     <button id="{{ e.id }}" onclick="attend('{{ e.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Going</button>
-                    {% set vars = {'otherButton': False} %}
+                    {% set ns.goto = false %}
                   {% endif%}
 
                 {% endfor %}
 
-                {% if otherButton == True %}
+                {% if ns.goto == true %}
                   <button id="{{ e.id }}" onclick="attend('{{ e.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                  {% set vars = {'otherButton': True} %}
                 {% endif %}
+
               {% endif %}
             </div>
             <small class="text-muted">9 mins</small>
