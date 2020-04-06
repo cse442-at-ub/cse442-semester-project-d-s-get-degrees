@@ -52,6 +52,8 @@
     </script>
   </head>
   <body>
+  <div class="container">
+    <div class="row">
     {% for e in event %}
 
     <div class="col-md-4">
@@ -90,70 +92,7 @@
     </div>
 
     {% endfor %}
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/apex/1.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-            fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-            <div class="card-body">
-            <h2>Event</h2>
-              <p class="card-text">Event Detail.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                  <button id="event-0" onclick="attend('event-0')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/lol/1.jpg" 
-              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-              <div class="card-body">
-              <h2>Event</h2>
-                <p class="card-text">Event Detail.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                    <button id="event-1" onclick="attend('event-1')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/csgo/1.jpg" 
-              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-              <div class="card-body">
-              <h2>Event</h2>
-                <p class="card-text">Event Detail.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                    <button id="event-2" onclick="attend('event-2')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-     
-
-      </div>
     </div>
+  </div>
+
 {% endblock %}
