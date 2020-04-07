@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, send_from_directory
+from flask import Blueprint, render_template, send_from_directory, request
+from flask.json import jsonify
 from flask_login import login_required, current_user
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
@@ -28,9 +29,6 @@ def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
 
-
-
-
 @main.route('/profile')
 @login_required
 def profile():
@@ -41,6 +39,10 @@ def profile():
     return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events , template_folder='../frontend')
 
 
+@main.route('/clubs', methods=['GET', 'POST'])
+def clubs():
+    if request.method == 'POST':
+        return jsonify({'message' : 'success'})
 
-
-
+    else: # if request.method == 'GET'
+        return render_template('clubs.html')
