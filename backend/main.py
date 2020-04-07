@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, send_from_directory
 from flask_login import login_required, current_user
+from backend.modules.event import Event
+from backend.modules.userEvent import UserEvent
 main = Blueprint('main', __name__)
 
 
@@ -16,15 +18,27 @@ def send_js(path):
 def send_images(path):
     return send_from_directory('../frontend/images', path)
 
+@main.route("/favicon.ico")
+def send_favicon():
+    return send_from_directory('../frontend', "favicon.ico")
+
 
 @main.route("/<path:path>")
 def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
+
+
+
+
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, template_folder='../frontend')
+    userEvents = UserEvent.query.filter_by(userID=current_user.id)
+    events = []
+    for event in userEvents:
+        events.append(Event.query.filter_by(id=event.eventID).first())
+    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events , template_folder='../frontend')
 
 
 
