@@ -1,8 +1,11 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from backend.modules.user import User
+from backend.modules.event import Event
+from backend.modules.userEvent import UserEvent
 from .. import db
+from flask.json import jsonify
 
 auth = Blueprint('auth', __name__)
 
@@ -57,3 +60,39 @@ def signup_post():
 def logout():
     logout_user()
     return redirect(url_for('main.index'))
+
+
+@auth.route('/events', methods=['GET', 'POST'])
+def events():
+    if request.method == 'POST':
+
+        eventID = request.json['eventID']
+        userID = current_user.get_id()
+
+        print('\n')
+        print('POST REQUEST VALUES:')
+        print('eventID : ' + eventID)
+        print('userID : ' + userID)
+        print('\n')
+
+        # if userEvent exists in database, remove it; else, add it.
+        userEvent = UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).first()
+        db.session.rollback()
+
+        print(userEvent)
+
+        if userEvent:
+            UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).delete()
+            db.session.commit()
+            return jsonify({'message' : 'success'})
+        else:
+            newUserEvent = UserEvent(userID, eventID)
+            db.session.add(newUserEvent)
+            db.session.commit()
+            return jsonify({'message' : 'success'})
+
+    else: # if request.method == 'GET'
+        event = Event.query.all()
+        userEvent = UserEvent.query.filter_by(userID = current_user.get_id())
+
+        return render_template('events.html', event=event, userEvent = userEvent, otherButton = True)

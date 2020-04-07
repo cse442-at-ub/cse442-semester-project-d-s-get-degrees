@@ -25,84 +25,76 @@
         }
       }
     </style>
-    <script type="text/javascript" src="../js/events.js"></script>
     <script>
+
       function attend(id) {
+        $(document).ready(function() {
+
+          $.ajax({
+            type : 'POST',
+            dataType : 'json',
+            url : '/events',
+            contentType : 'application/json;charset=UTF-8',
+            data : JSON.stringify({ 'eventID' : id })
+          })
+
           var innerText = document.getElementById(id).innerHTML;
           if(innerText === "Go to This Event") {
-              document.getElementById(id).innerHTML = "Going";
+          document.getElementById(id).innerHTML = "Going";
           }
 
           if(innerText === "Going") {
-              document.getElementById(id).innerHTML = "Go to This Event";
+          document.getElementById(id).innerHTML = "Go to This Event";
           }
+        })
       }
+      
     </script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/apex/1.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-            fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-            <div class="card-body">
-            <h2>Event</h2>
-              <p class="card-text">Event Detail.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                  <button id="event-0" onclick="attend('event-0')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
+  <div class="container">
+    <div class="row">
+    {% for e in event %}
+
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ e.image }}" 
+        preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
+        fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
+        <div class="card-body">
+        <h2>{{ e.title }}</h2>
+          <p class="card-text"> {{ e.description}}.</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+              {% if current_user.is_authenticated %}
+              <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
+
+                {% set ns = namespace(goto=true) %}
+
+                {% for ue in userEvent%}
+
+                  {% if ue.eventID == e.id %}
+                    <button id="{{ e.id }}" onclick="attend('{{ e.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Going</button>
+                    {% set ns.goto = false %}
+                  {% endif%}
+
+                {% endfor %}
+
+                {% if ns.goto == true %}
+                  <button id="{{ e.id }}" onclick="attend('{{ e.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
+                {% endif %}
+
+              {% endif %}
             </div>
+            <small class="text-muted">9 mins</small>
           </div>
         </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/lol/1.jpg" 
-              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-              <div class="card-body">
-              <h2>Event</h2>
-                <p class="card-text">Event Detail.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                    <button id="event-1" onclick="attend('event-1')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/games/csgo/1.jpg" 
-              preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" 
-              fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
-              <div class="card-body">
-              <h2>Event</h2>
-                <p class="card-text">Event Detail.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Star</button>
-                    <button id="event-2" onclick="attend('event-2')" type="button" class="btn btn-sm btn-outline-secondary">Go to This Event</button>
-                  </div>
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
-          </div>
-     
-
       </div>
     </div>
+
+    {% endfor %}
+    </div>
+  </div>
+
 {% endblock %}
