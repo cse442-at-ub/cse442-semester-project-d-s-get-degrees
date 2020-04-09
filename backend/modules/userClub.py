@@ -7,6 +7,6 @@ class UserClub(db.Model):
     userID = db.Column(db.Integer, nullable = False)
     eventID = db.Column(db.Integer, nullable = False)
 
-    def __init__(self, userID, eventID):
+    def __init__(self, userID, clubID):
         self.userID = userID
-        self.eventID = eventID
+        self.eventID = clubID

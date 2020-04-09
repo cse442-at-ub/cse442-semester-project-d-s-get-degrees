@@ -3,6 +3,10 @@ from flask.json import jsonify
 from flask_login import login_required, current_user
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
+from backend.modules.userClub import UserClub
+from backend.modules.club import Club
+from . import db
+
 main = Blueprint('main', __name__)
 
 
@@ -42,7 +46,27 @@ def profile():
 @main.route('/clubs', methods=['GET', 'POST'])
 def clubs():
     if request.method == 'POST':
-        return jsonify({'message' : 'success'})
+        clubID = request.json['clubID']
+        userID = current_user.get_id()
+
+        # if userEvent exists in database, remove it; else, add it.
+        userClub = UserClub.query.filter(UserClub.userID == userID, UserClub.clubID == clubID).first()
+        db.session.rollback()
+
+        if userClub:
+            UserClub.query.filter(UserClub.userID == userID, UserClub.clubID == clubID).delete()
+            db.session.commit()
+            return jsonify({'message' : 'success, item removed from database'})
+
+        else:
+            newUserClub = UserClub(userID, clubID)
+            db.session.add(newUserClub)
+            db.session.commit()
+
+        return jsonify({'message' : 'success, item added to database'})
 
     else: # if request.method == 'GET'
-        return render_template('clubs.html')
+        clubs = Club.query.all()
+        userClub = UserClub.query.filter_by(userID = current_user.get_id())
+
+        return render_template('clubs.html', clubs = clubs, userClub = userClub, otherButton = True)

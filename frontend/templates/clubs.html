@@ -38,23 +38,47 @@
       </div>
         <div class="container">
     <div class="row mb-2">
+
+        {% for c in clubs %}
+
         <div class="col-md-12">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
-            </div>
-            <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">Club Name</h3>
-                <div class="mb-1 text-muted"></div>
-                <p class="card-text mb-auto">Club description here</p>
-                <a href="#" class="stretched-link">More</a>
-                {% if current_user.is_authenticated %}
-                    <button id="join-club-1" onclick="join_club('join-club-1')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
-                {% endif %}
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="250" height="250" xmlns=" {{ c.image }}" 
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/></svg>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0"> {{ c.name }} </h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto"> {{ c.description }}</p>
+                    <a href="#" class="stretched-link">More</a>
+                    {% if current_user.is_authenticated %}
+                        <button id="{{c.id}}" onclick="join_club('{{c.id}}')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
+                    {% endif %}
+                </div>
             </div>
         </div>
+
+        {% endfor %}
+
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0">Club Name</h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto">Club description here</p>
+                    <a href="#" class="stretched-link">More</a>
+                    {% if current_user.is_authenticated %}
+                        <button id="join-club-1" onclick="join_club('join-club-1')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="col-md-12">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
