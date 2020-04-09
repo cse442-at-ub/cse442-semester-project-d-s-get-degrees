@@ -53,8 +53,24 @@
                     <div class="mb-1 text-muted"></div>
                     <p class="card-text mb-auto"> {{ c.description }}</p>
                     <a href="#" class="stretched-link">More</a>
+
                     {% if current_user.is_authenticated %}
-                        <button id="{{c.id}}" onclick="join_club('{{c.id}}')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
+
+                        {% set ns = namespace(goto=true) %}
+
+                        {% for uc in userClub%}
+        
+                            {% if uc.clubID == c.id %}
+                                <button id="{{ c.id }}" onclick="join_club('{{ c.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Joined</button>
+                                {% set ns.goto = false %}
+                            {% endif%}
+        
+                        {% endfor %}
+        
+                        {% if ns.goto == true %}
+                            <button id="{{ c.id }}" onclick="join_club('{{ c.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
+                        {% endif %}
+
                     {% endif %}
                 </div>
             </div>

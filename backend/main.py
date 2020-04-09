@@ -36,11 +36,18 @@ def route(path):
 @main.route('/profile')
 @login_required
 def profile():
-    userEvents = UserEvent.query.filter_by(userID=current_user.id)
+    userClubs = UserClub.query.filter_by(userID = current_user.id)
+    userEvents = UserEvent.query.filter_by(userID = current_user.id)
+    clubs = []
     events = []
+    # possible bug, what happens when multiple users register for multiple events or clubs?
+    # Future make python object and have dict. be of type object
+    for club in userClubs:
+        clubs.append(Club.query.filter_by(id = club.clubID).first())
     for event in userEvents:
         events.append(Event.query.filter_by(id=event.eventID).first())
-    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events , template_folder='../frontend')
+    
+    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events, clubs = clubs, template_folder='../frontend')
 
 
 @main.route('/clubs', methods=['GET', 'POST'])
