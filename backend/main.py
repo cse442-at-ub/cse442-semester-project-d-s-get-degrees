@@ -47,7 +47,7 @@ def profile():
     for event in userEvents:
         events.append(Event.query.filter_by(id=event.eventID).first())
     
-    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events, clubs = clubs, template_folder='../frontend')
+    return render_template('profile.html', name=current_user.firstName+" "+current_user.lastName, events = events, clubs = clubs, profilePic=current_user.profilePic, template_folder='../frontend')
 
 
 @main.route('/clubs', methods=['GET', 'POST'])
