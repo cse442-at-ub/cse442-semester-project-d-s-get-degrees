@@ -35,7 +35,7 @@
           </div>
 
            <style>
-            .modal{
+            .csgo-modal{
               display: none;
               position: fixed;
               z-index: 1;
@@ -48,7 +48,7 @@
               background-color: rgb(0,0,0);
               background-color: rgba(0,0,0,0.4);
             }
-            .modal-content{
+            .csgo-content{
               position: relative;
               margin: auto;
               padding: 0;
@@ -57,63 +57,63 @@
               border: 1px solid #888;
               background-color: #fefefe;
             }
-            .close{
+            .csgo-close{
               color: white;
               float: right;
               font-size: 28px;
               font-weight: bold;
             }
-            .close:hover,
-            .close:focus{
+            .csgo-close:hover,
+            .csgo-close:focus{
               color: #000000;
               text-decoration: none;
               cursor: pointer;
             }
-            .modal-headder{
+            .csgo-headder{
               padding: 2px 16px;
               background-color: #005fff;
               color: white;
             }
-            .modal-body{
+            .csgo-body{
               padding: 2px 16px;
             }
-            .modal-footer{
+            .csgo-footer{
               padding: 2px 16px;
               background-color: #005fff;
               color: white;
             }
           </style>
 
-          <a id="more-CS" href="#" class="stretched-link">More</a>
+          <a id="more-csgo" href="#" class="stretched-link">More</a>
           
-          <div id="CS-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="csgo-drop" class="csgo-modal">
+            <div class= "csgo-content">
+              <div class = "csgo-headder">
+                <span class="csgo-close">&times;</span>
                 <h2>UB CSGO</h2>
               </div>
-              <div class="modal-body">
+              <div class="csgo-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="csgo-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("CS-drop");
-            var button = document.getElementById("more-CS");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropCSGO = document.getElementById("csgo-drop");
+            var buttonCSGO = document.getElementById("more-csgo");
+            var spanCSGO = document.getElementsByClassName("csgo-close")[0];
+            buttonCSGO.onclick = function() {
+              dropCSGO.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanCSGO.onclick = function() {
+              dropCSGO.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropCSGO) {
+                dropCSGO.style.display = "none";
               }
             }
           </script>
@@ -156,36 +156,86 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
-           <a id="more-lol" href="#" class="stretched-link1">More</a>
+           <style>
+            .esportsLOL-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .esportsLOL-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .esportsLOL-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .esportsLOL-close:hover,
+            .esportsLOL-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .esportsLOL-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .esportsLOL-body{
+              padding: 2px 16px;
+            }
+            .esportsLOL-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
+          <a id="more-esportsLOL" href="#" class="stretched-link1">More</a>
           
-          <div id="lol-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="esportsLOL-drop" class="esportsLOL-modal">
+            <div class= "esportsLOL-content">
+              <div class = "esportsLOL-headder">
+                <span class="esportsLOL-close">&times;</span>
                 <h2>UB Esports</h2>
               </div>
-              <div class="modal-body">
+              <div class="esportsLOL-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="esportsLOL-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("lol-drop");
-            var button = document.getElementById("more-lol");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropEsportsLOL = document.getElementById("esportsLOL-drop");
+            var buttonEsportsLOL = document.getElementById("more-esportsLOL");
+            var spanEsportsLOL = document.getElementsByClassName("esportsLOL-close")[0];
+            buttonEsportsLOL.onclick = function() {
+              dropEsportsLOL.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanEsportsLOL.onclick = function() {
+              dropEsportsLOL.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropEsportsLOL) {
+                dropEsportsLOL.style.display = "none";
               }
             }
           </script>
@@ -228,39 +278,90 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
+           <style>
+            .tempest-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .tempest-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .tempest-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .tempest-close:hover,
+            .tempest-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .tempest-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .tempest-body{
+              padding: 2px 16px;
+            }
+            .tempest-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
           <a id="more-tempest" href="#" class="stretched-link">More</a>
           
-          <div id="tempest-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="tempest-drop" class="tempest-modal">
+            <div class= "tempest-content">
+              <div class = "tempest-headder">
+                <span class="tempest-close">&times;</span>
                 <h2>UB Tempest</h2>
               </div>
-              <div class="modal-body">
+              <div class="tempest-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="tempest-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("tempest-drop");
-            var button = document.getElementById("more-tempest");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropTempest = document.getElementById("tempest-drop");
+            var buttonTempest = document.getElementById("more-tempest");
+            var spanTempest = document.getElementsByClassName("tempest-close")[0];
+            buttonTempest.onclick = function() {
+              dropTempest.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanTempest.onclick = function() {
+              dropTempest.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropTempest) {
+                dropTempest.style.display = "none";
               }
             }
           </script>
+
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
@@ -299,39 +400,90 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
+          <style>
+            .circus-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .circus-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .circus-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .circus-close:hover,
+            .circus-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .circus-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .circus-body{
+              padding: 2px 16px;
+            }
+            .circus-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
           <a id="more-circus" href="#" class="stretched-link">More</a>
           
-          <div id="circus-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="circus-drop" class="circus-modal">
+            <div class= "circus-content">
+              <div class = "circus-headder">
+                <span class="circus-close">&times;</span>
                 <h2>UB Circus</h2>
               </div>
-              <div class="modal-body">
+              <div class="circus-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="circus-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("circus-drop");
-            var button = document.getElementById("more-circus");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropCircus = document.getElementById("circus-drop");
+            var buttonCircus = document.getElementById("more-circus");
+            var spanCircus = document.getElementsByClassName("circus-close")[0];
+            buttonCircus.onclick = function() {
+              dropCircus.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanCircus.onclick = function() {
+              dropCircus.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropCircus) {
+                dropCircus.style.display = "none";
               }
             }
           </script>
+
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
@@ -370,39 +522,90 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
-           <a id="more-frostbyte" href="#" class="stretched-link">More</a>
+          <style>
+            .frostbyte-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .frostbyte-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .frostbyte-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .frostbyte-close:hover,
+            .frostbyte-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .frostbyte-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .frostbyte-body{
+              padding: 2px 16px;
+            }
+            .frostbyte-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
+          <a id="more-frostbyte" href="#" class="stretched-link">More</a>
           
-          <div id="frostbyte-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="frostbyte-drop" class="frostbyte-modal">
+            <div class= "frostbyte-content">
+              <div class = "frostbyte-headder">
+                <span class="frostbyte-close">&times;</span>
                 <h2>UB FrostByte</h2>
               </div>
-              <div class="modal-body">
+              <div class="frostbyte-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="frostbyte-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("frostbyte-drop");
-            var button = document.getElementById("more-frostbyte");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropFrostbyte = document.getElementById("frostbyte-drop");
+            var buttonFrostbyte = document.getElementById("more-frostbyte");
+            var spanFrostbyte = document.getElementsByClassName("frostbyte-close")[0];
+            buttonFrostbyte.onclick = function() {
+              dropFrostbyte.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanFrostbyte.onclick = function() {
+              dropFrostbyte.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropFrostbyte) {
+                dropFrostbyte.style.display = "none";
               }
             }
           </script>
+
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
@@ -441,39 +644,90 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
+         <style>
+            .alpha-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .alpha-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .alpha-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .alpha-close:hover,
+            .alpha-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .alpha-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .alpha-body{
+              padding: 2px 16px;
+            }
+            .alpha-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
           <a id="more-alpha" href="#" class="stretched-link">More</a>
           
-          <div id="alpha-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="alpha-drop" class="alpha-modal">
+            <div class= "alpha-content">
+              <div class = "alpha-headder">
+                <span class="alpha-close">&times;</span>
                 <h2>UB Alpha</h2>
               </div>
-              <div class="modal-body">
+              <div class="alpha-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="alpha-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
-            
+
           <script>
-            var drop = document.getElementById("alpha-drop");
-            var button = document.getElementById("more-alpha");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropAlpha = document.getElementById("alpha-drop");
+            var buttonAlpha = document.getElementById("more-alpha");
+            var spanAlpha = document.getElementsByClassName("alpha-close")[0];
+            buttonAlpha.onclick = function() {
+              dropAlpha.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanAlpha.onclick = function() {
+              dropAlpha.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropAlpha) {
+                dropAlpha.style.display = "none";
               }
             }
           </script>
+
         </div>
         <div class="col-auto d-none d-lg-block">
           <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
@@ -512,36 +766,86 @@
             data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
           </div>
 
+           <style>
+            .bees-modal{
+              display: none;
+              position: fixed;
+              z-index: 1;
+              padding-top: 100px;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              overflow: auto;
+              background-color: rgb(0,0,0);
+              background-color: rgba(0,0,0,0.4);
+            }
+            .bees-content{
+              position: relative;
+              margin: auto;
+              padding: 0;
+              width: 80%;
+              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+              border: 1px solid #888;
+              background-color: #fefefe;
+            }
+            .bees-close{
+              color: white;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+            }
+            .bees-close:hover,
+            .bees-close:focus{
+              color: #000000;
+              text-decoration: none;
+              cursor: pointer;
+            }
+            .bees-headder{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+            .bees-body{
+              padding: 2px 16px;
+            }
+            .bees-footer{
+              padding: 2px 16px;
+              background-color: #005fff;
+              color: white;
+            }
+          </style>
+
           <a id="more-bees" href="#" class="stretched-link">More</a>
           
-          <div id="bees-drop" class="modal">
-            <div class= "modal-content">
-              <div class = "modal-headder">
-                <span class="close">&times;</span>
+          <div id="bees-drop" class="bees-modal">
+            <div class= "bees-content">
+              <div class = "bees-headder">
+                <span class="bees-close">&times;</span>
                 <h2>Buffalo Bees</h2>
               </div>
-              <div class="modal-body">
+              <div class="bees-body">
                 <p>Description here</p>
               </div>
-              <div class="modal-footer">
+              <div class="bees-footer">
                 <h3>Footer</h3>
               </div>
             </div>
           </div>
             
           <script>
-            var drop = document.getElementById("bees-drop");
-            var button = document.getElementById("more-bees");
-            var span = document.getElementsByClassName("close")[0];
-            button.onclick = function() {
-              drop.style.display = "block";
+            var dropBees = document.getElementById("bees-drop");
+            var buttonBees = document.getElementById("more-bees");
+            var spanBees = document.getElementsByClassName("bees-close")[0];
+            buttonBees.onclick = function() {
+              dropBees.style.display = "block";
             }
-            span.onclick = function() {
-              drop.style.display = "none";
+            spanBees.onclick = function() {
+              dropBees.style.display = "none";
             }
             window.onclick = function(event) {
-              if(event.target == drop) {
-                drop.style.display = "none";
+              if(event.target == dropBees) {
+                dropBees.style.display = "none";
               }
             }
           </script>
