@@ -69,17 +69,9 @@ def events():
         eventID = request.json['eventID']
         userID = current_user.get_id()
 
-        print('\n')
-        print('POST REQUEST VALUES:')
-        print('eventID : ' + eventID)
-        print('userID : ' + userID)
-        print('\n')
-
         # if userEvent exists in database, remove it; else, add it.
         userEvent = UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).first()
         db.session.rollback()
-
-        print(userEvent)
 
         if userEvent:
             UserEvent.query.filter(UserEvent.userID == userID, UserEvent.eventID == eventID).delete()

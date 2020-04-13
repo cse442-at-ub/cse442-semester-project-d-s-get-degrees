@@ -1,5 +1,33 @@
 {% extends "base.html" %}
 
+{% block head %}
+    {{ super() }}
+    <script>
+        function join_club(id) {
+            $(document).ready(function() {
+
+            $.ajax({
+                type : 'POST',
+                dataType : 'json',
+                url : '/clubs',
+                contentType : 'application/json;charset=UTF-8',
+                data : JSON.stringify({ 'clubID' : id })
+            })
+
+            var innerText = document.getElementById(id).innerHTML;
+
+            if(innerText === "Join Club") {
+                document.getElementById(id).innerHTML = "Joined";
+            }
+
+            if(innerText === "Joined") {
+                document.getElementById(id).innerHTML = "Join Club";
+            }
+            })
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
       <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
@@ -10,66 +38,49 @@
       </div>
         <div class="container">
     <div class="row mb-2">
-        <div class="col-md-12">
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
-            </div>
-            <div class="col p-4 d-flex flex-column position-static">
-            <h3 class="mb-0">Club Name</h3>
-            <div class="mb-1 text-muted"></div>
-            <p class="card-text mb-auto">Club description here</p>
-            <a href="#" class="stretched-link">More</a>
-            </div>
-        </div>
-        </div>
+
+        {% for c in clubs %}
+
         <div class="col-md-12">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
-            </div>
-            <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">Club Name</h3>
-                <div class="mb-1 text-muted"></div>
-                <p class="card-text mb-auto">Club description here</p>
-                <a href="#" class="stretched-link">More</a>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
-            </div>
-            <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">Club Name</h3>
-                <div class="mb-1 text-muted"></div>
-                <p class="card-text mb-auto">Club description here</p>
-                <a href="#" class="stretched-link">More</a>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Club Logo</text></svg>
-            </div>
-            <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">Club Name</h3>
-                <div class="mb-1 text-muted"></div>
-                <p class="card-text mb-auto">Club description here</p>
-                <a href="#" class="stretched-link">More</a>
-            </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" src="{{c.image}}"
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/></img>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0"> {{ c.name }} </h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto"> {{ c.description }}</p>
+                    <a href="#" class="stretched-link">More</a>
+
+                    {% if current_user.is_authenticated %}
+
+                        {% set ns = namespace(goto=true) %}
+
+                        {% for uc in userClub%}
+        
+                            {% if uc.clubID == c.id %}
+                                <button id="{{ c.id }}" onclick="join_club('{{ c.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Joined</button>
+                                {% set ns.goto = false %}
+                            {% endif%}
+        
+                        {% endfor %}
+        
+                        {% if ns.goto == true %}
+                            <button id="{{ c.id }}" onclick="join_club('{{ c.id }}')" type="submit" class="btn btn-sm btn-outline-secondary">Join Club</button>
+                        {% endif %}
+
+                    {% endif %}
+                </div>
             </div>
         </div>
+
+        {% endfor %}
+
+
+
+
     </div>
 </div>
 {% endblock %}
