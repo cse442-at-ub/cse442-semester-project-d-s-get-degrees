@@ -2,908 +2,159 @@
 
 {% block content %}
   <div class="container">
+  <div id="team_container" class="row mb-2">
 
-  <div class="row mb-2">
+    <template>
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Counter Strike</strong>
-          <h3 class="mb-0">UB CSGO</h3>
+        <div id="m" class="col p-4 d-flex flex-column position-static">
+          <strong id="game" class="d-inline-block mb-2 text-primary">Counter Strike</strong>
+          <h3 id="name" class="mb-0">UB CSGO</h3>
           <div class="mb-1 text-muted"></div>
           <p class="card-text mb-auto"></p>
 
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
+          <div id="avators"class="row ml-0 tooltip-demo"></div>
+          <div class="ml-2 row">
+          <a id="more" type="button"  data-toggle="modal" data-target="#exampleModalLong"  class="mt-3 btn btn-primary text-light">More</a>
           </div>
-
-           <style>
-            .csgo-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .csgo-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .csgo-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .csgo-close:hover,
-            .csgo-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .csgo-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .csgo-body{
-              padding: 2px 16px;
-            }
-            .csgo-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-csgo" href="#" class="stretched-link">More</a>
-          
-          <div id="csgo-drop" class="csgo-modal">
-            <div class= "csgo-content">
-              <div class = "csgo-headder">
-                <span class="csgo-close">&times;</span>
-                <h2>UB CSGO</h2>
-              </div>
-              <div class="csgo-body">
-                 <p>Roster:</p>
-                <p>eXploZioNz</p>
-                <p>Inject</p>
-                <p>YC</p>
-                <p>iCherios</p>
-                <p>Yoshimar</p>
-              </div>
-              <div class="csgo-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropCSGO = document.getElementById("csgo-drop");
-            var buttonCSGO = document.getElementById("more-csgo");
-            var spanCSGO = document.getElementsByClassName("csgo-close")[0];
-            buttonCSGO.onclick = function() {
-              dropCSGO.style.display = "block";
-            }
-            spanCSGO.onclick = function() {
-              dropCSGO.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropCSGO) {
-                dropCSGO.style.display = "none";
-              }
-            }
-          </script>
-
         </div>
         <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
+          <img id='logo' class="bd-placeholder-img" width="250" height="250" src="https://cdn2.iconfinder.com/data/icons/popular-games-1/50/csgo_squircle-512.png" >
         </div>
       </div>
     </div>
+  </template>
 
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">League of Legends</strong>
-          <h3 class="mb-0">UB Esports</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto"></p>
+  <template>
+    <img id="X" class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
+    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
+    data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
+  </template>
 
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
+  <template>
+    <div class="modal fade" id="XXXXX" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Team Detail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-
-           <style>
-            .esportsLOL-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .esportsLOL-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .esportsLOL-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .esportsLOL-close:hover,
-            .esportsLOL-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .esportsLOL-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .esportsLOL-body{
-              padding: 2px 16px;
-            }
-            .esportsLOL-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-esportsLOL" href="#" class="stretched-link1">More</a>
-          
-          <div id="esportsLOL-drop" class="esportsLOL-modal">
-            <div class= "esportsLOL-content">
-              <div class = "esportsLOL-headder">
-                <span class="esportsLOL-close">&times;</span>
-                <h2>UB Esports</h2>
-              </div>
-              <div class="esportsLOL-body">
-                <p>Roster:</p>
-                <p>Seet</p>
-                <p>IceSnowClever</p>
-                <p>Ghoulster</p>
-                <p>LetMeCryARiven</p>
-                <p>Oriku</p>
-              </div>
-              <div class="esportsLOL-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropEsportsLOL = document.getElementById("esportsLOL-drop");
-            var buttonEsportsLOL = document.getElementById("more-esportsLOL");
-            var spanEsportsLOL = document.getElementsByClassName("esportsLOL-close")[0];
-            buttonEsportsLOL.onclick = function() {
-              dropEsportsLOL.style.display = "block";
-            }
-            spanEsportsLOL.onclick = function() {
-              dropEsportsLOL.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropEsportsLOL) {
-                dropEsportsLOL.style.display = "none";
-              }
-            }
-          </script>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
+          <div id='modal-body' class="modal-body"></div>
         </div>
       </div>
     </div>
+  </template>
 
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Overwatch</strong>
-          <h3 class="mb-0">Tempest</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto"></p>
-
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
-          </div>
-
-           <style>
-            .tempest-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .tempest-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .tempest-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .tempest-close:hover,
-            .tempest-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .tempest-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .tempest-body{
-              padding: 2px 16px;
-            }
-            .tempest-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-tempest" href="#" class="stretched-link">More</a>
-          
-          <div id="tempest-drop" class="tempest-modal">
-            <div class= "tempest-content">
-              <div class = "tempest-headder">
-                <span class="tempest-close">&times;</span>
-                <h2>UB Tempest</h2>
-              </div>
-              <div class="tempest-body">
-                <p>Roster:</p>
-                <p>blank!!</p>
-                <p>Kaiwen</p>
-                <p>Kev2298</p>
-                <p>JustAPotato</p>
-                <p>RAYCAL2000</p>
-                <p>Darekayen</p>
-                <p>iah</p>
-              </div>
-              <div class="tempest-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropTempest = document.getElementById("tempest-drop");
-            var buttonTempest = document.getElementById("more-tempest");
-            var spanTempest = document.getElementsByClassName("tempest-close")[0];
-            buttonTempest.onclick = function() {
-              dropTempest.style.display = "block";
-            }
-            spanTempest.onclick = function() {
-              dropTempest.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropTempest) {
-                dropTempest.style.display = "none";
-              }
-            }
-          </script>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Overwatch</strong>
-          <h3 class="mb-0">Circus</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto"></p>
-
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
-          </div>
-
-          <style>
-            .circus-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .circus-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .circus-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .circus-close:hover,
-            .circus-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .circus-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .circus-body{
-              padding: 2px 16px;
-            }
-            .circus-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-circus" href="#" class="stretched-link">More</a>
-          
-          <div id="circus-drop" class="circus-modal">
-            <div class= "circus-content">
-              <div class = "circus-headder">
-                <span class="circus-close">&times;</span>
-                <h2>UB Circus</h2>
-              </div>
-              <div class="circus-body">
-                <p>Roster:</p>
-                <p>DurnisBane</p>
-                <p>Kikekomonome</p>
-                <p>noctem</p>
-                <p>Kantaru</p>
-                <p>mom</p>
-                <p>KP557</p>
-                <p>WeaponTechX</p>
-                <p>Amaterasu903</p>
-                <p>Colonizer</p>
-              </div>
-              <div class="circus-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropCircus = document.getElementById("circus-drop");
-            var buttonCircus = document.getElementById("more-circus");
-            var spanCircus = document.getElementsByClassName("circus-close")[0];
-            buttonCircus.onclick = function() {
-              dropCircus.style.display = "block";
-            }
-            spanCircus.onclick = function() {
-              dropCircus.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropCircus) {
-                dropCircus.style.display = "none";
-              }
-            }
-          </script>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Overwatch</strong>
-          <h3 class="mb-0">FrostByte</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto"></p>
-
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
-          </div>
-
-          <style>
-            .frostbyte-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .frostbyte-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .frostbyte-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .frostbyte-close:hover,
-            .frostbyte-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .frostbyte-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .frostbyte-body{
-              padding: 2px 16px;
-            }
-            .frostbyte-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-frostbyte" href="#" class="stretched-link">More</a>
-          
-          <div id="frostbyte-drop" class="frostbyte-modal">
-            <div class= "frostbyte-content">
-              <div class = "frostbyte-headder">
-                <span class="frostbyte-close">&times;</span>
-                <h2>UB FrostByte</h2>
-              </div>
-              <div class="frostbyte-body">
-                <p>Roster:</p>
-                <p>Quel</p>
-                <p>Darekayen</p>
-                <p>mom</p>
-                <p>WeaponTechX</p>
-                <p>AlphaDivine</p>
-                <p>JustAPotato</p>
-                <p>Ruby</p>
-                <p>Everknight</p>
-              </div>
-              <div class="frostbyte-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropFrostbyte = document.getElementById("frostbyte-drop");
-            var buttonFrostbyte = document.getElementById("more-frostbyte");
-            var spanFrostbyte = document.getElementsByClassName("frostbyte-close")[0];
-            buttonFrostbyte.onclick = function() {
-              dropFrostbyte.style.display = "block";
-            }
-            spanFrostbyte.onclick = function() {
-              dropFrostbyte.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropFrostbyte) {
-                dropFrostbyte.style.display = "none";
-              }
-            }
-          </script>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Rainbow Six Siege</strong>
-          <h3 class="mb-0">UB Alpha</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto"></p>
-
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
-          </div>
-
-         <style>
-            .alpha-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .alpha-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .alpha-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .alpha-close:hover,
-            .alpha-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .alpha-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .alpha-body{
-              padding: 2px 16px;
-            }
-            .alpha-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-alpha" href="#" class="stretched-link">More</a>
-          
-          <div id="alpha-drop" class="alpha-modal">
-            <div class= "alpha-content">
-              <div class = "alpha-headder">
-                <span class="alpha-close">&times;</span>
-                <h2>UB Alpha</h2>
-              </div>
-              <div class="alpha-body">
-                <p>Roster:</p>
-                <p>Zigalo</p>
-                <p>JsnMomoasHitbox</p>
-                <p>Dugan.UB</p>
-                <p>InfinitiX.UB</p>
-                <p>TamalesRUs</p>
-              </div>
-              <div class="alpha-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-
-          <script>
-            var dropAlpha = document.getElementById("alpha-drop");
-            var buttonAlpha = document.getElementById("more-alpha");
-            var spanAlpha = document.getElementsByClassName("alpha-close")[0];
-            buttonAlpha.onclick = function() {
-              dropAlpha.style.display = "block";
-            }
-            spanAlpha.onclick = function() {
-              dropAlpha.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropAlpha) {
-                dropAlpha.style.display = "none";
-              }
-            }
-          </script>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Rainbow Six Siege</strong>
-          <h3 class="mb-0">Buffalo Bees</h3>
-          <div class="mb-1 text-muted"></div>
-          <p class="card-text mb-auto">Team description here</p>
-
-          <div class="row ml-0 tooltip-demo">
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 2"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 3"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 4"></img>
-
-            <img class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-            preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-            data-toggle="tooltip" data-placement="bottom" title="Player 5"></img>
-          </div>
-
-           <style>
-            .bees-modal{
-              display: none;
-              position: fixed;
-              z-index: 1;
-              padding-top: 100px;
-              left: 0;
-              top: 0;
-              width: 100%;
-              height: 100%;
-              overflow: auto;
-              background-color: rgb(0,0,0);
-              background-color: rgba(0,0,0,0.4);
-            }
-            .bees-content{
-              position: relative;
-              margin: auto;
-              padding: 0;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-              border: 1px solid #888;
-              background-color: #fefefe;
-            }
-            .bees-close{
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            .bees-close:hover,
-            .bees-close:focus{
-              color: #000000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            .bees-headder{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-            .bees-body{
-              padding: 2px 16px;
-            }
-            .bees-footer{
-              padding: 2px 16px;
-              background-color: #005fff;
-              color: white;
-            }
-          </style>
-
-          <a id="more-bees" href="#" class="stretched-link">More</a>
-          
-          <div id="bees-drop" class="bees-modal">
-            <div class= "bees-content">
-              <div class = "bees-headder">
-                <span class="bees-close">&times;</span>
-                <h2>Buffalo Bees</h2>
-              </div>
-              <div class="bees-body">
-                <p>Roster:</p>
-                <p>locky_Y</p>
-                <p>Jase_Plague</p>
-                <p>FRosT_ybite</p>
-                <p>joeytribbinai9</p>
-                <p>levvit</p>
-                <p>LazyCouchPotato</p>
-              </div>
-              <div class="bees-footer">
-                <h3>Footer</h3>
-              </div>
-            </div>
-          </div>
-            
-          <script>
-            var dropBees = document.getElementById("bees-drop");
-            var buttonBees = document.getElementById("more-bees");
-            var spanBees = document.getElementsByClassName("bees-close")[0];
-            buttonBees.onclick = function() {
-              dropBees.style.display = "block";
-            }
-            spanBees.onclick = function() {
-              dropBees.style.display = "none";
-            }
-            window.onclick = function(event) {
-              if(event.target == dropBees) {
-                dropBees.style.display = "none";
-              }
-            }
-          </script>
-          
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" 
-          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">TeamLogo</text></svg>
-        </div>
-      </div>
-    </div>
 </div>
 </div>
+<script>
+  teams=[
+  {Game:"OverWatch",Name:"Tempest",LOGO:"images/Overwatch.png",Players:[
+    {name:"blank!!",reserve:false},
+    {name:"Kaiwen",reserve:false},
+    {name:"Kev2298",reserve:false},
+    {name:"JustAPotato",reserve:false},
+    {name:"RAYCAL2000",reserve:false},
+    {name:"Darekayen",reserve:false},
+    {name:"iah",reserve:false},
+  ],Description:"Tempest is the main Overwatch team at UB. They are registered at TESPA Collegiate, who are partnered with Blizzard Entertainment, making it the official collegiate organization for Overwatch. "},
+  
+  
+  {Game:"OverWatch",Name:"Circus",LOGO:"images/Overwatch.png",Players:[
+    {name:"DurnisBane",reserve:false},
+    {name:"Kikekomonome",reserve:false},
+    {name:"noctem",reserve:false},
+    {name:"Kantaru",reserve:false},
+    {name:"mom",reserve:false},
+    {name:"KP557",reserve:false},
+    {name:"WeaponTechX",reserve:false},
+    {name:"Amaterasu903",reserve:false},
+    {name:"Colonizer",reserve:false},],
+    Description:"Circus is the second competitive collegiate team for Overwatch. They are also registered for TESPA Collegiate and their captain is DurnisBane."},
+  
+  
+
+  {Game:"OverWatch",Name:"FrostByte",LOGO:"images/Overwatch.png",Players:[
+    {name:"Quel",reserve:false},
+    {name:"Darekayen",reserve:false},
+    {name:"mom",reserve:false},
+    {name:"WeaponTechX",reserve:false},
+    {name:"AlphaDivine",reserve:false},
+    {name:"JustAPotato",reserve:false},
+    {name:"Ruby",reserve:false},
+    {name:"Everknight",reserve:false},],
+    Description:"The last of the Overwatch teams, FrostByte is the intrumeral Overwatch team with Quel as the captain. They’re not registered for any outside tournaments, but they do play in the in-house Buffalo Overwatch League Tournament that occurs every semester."},
+  
+  {Game:"Counter Strike",Name:"UB CSGO",LOGO:"images/CSGO.png",
+  Players:[
+    {name:"eXploZioNz",reserve:false},
+    {name:"Inject",reserve:false},
+    {name:"YC",reserve:false},
+    {name:"iCherios",reserve:false},
+    {name:"Yoshimar",reserve:false}],
+  Description:"With eXploZioNz as their captain, UB CSGO is the main Counter Strike team representing the University at Buffalo. The team is registered for the Collegiate StarLeague, or CSL."},
+  
+  {Game:"Rainbow Six Siege",Name:"UB Alpha",LOGO:"images/R6.jpg",Players:[
+    {name:"Zigalo",reserve:false},
+    {name:"JsnMomoasHitbox",reserve:false},
+    {name:"Dugan.UB",reserve:false},
+    {name:"InfinitiX.UB",reserve:false},
+    {name:"TamalesRUs",reserve:false},],
+    Description:"UB Alpha is our main roster for Rainbow Six Siege. With Zigalo as their captain, they are registered for both the College Rainbow Six League and the Collegiate Esports Association for Siege."},
+   
+  
+  {Game:"Rainbow Six Siege",Name:"Buffalo Bees",LOGO:"images/R6.jpg",Players:[
+    {name:"locky_Y",reserve:false},
+    {name:"Jase_Plague",reserve:false},
+    {name:"FRosT_ybite",reserve:false},
+    {name:"joeytribbinai9",reserve:false},
+    {name:"levvit",reserve:false},
+    {name:"LazyCouchPotato",reserve:false},],
+    Description:"The Bees are the second collegiate team at UB. locky_Y is the team captain, and although they aren’t registered for any outside tournaments, they are ready to compete."},
+   
+  {Game:"League of Legends",Name:"UB Esports",LOGO:"images/LOL.png",Players:[
+    {name:"Seet",reserve:false},
+    {name:"IceSnowClever",reserve:false},
+    {name:"Ghoulster",reserve:false},
+    {name:"LetMeCryARiven",reserve:false},
+    {name:"Oriku",reserve:false},],
+    Description:"Our League of Legends team goes under the name UB Esports. Headed by Seet as the team captain and Sora 10 as the manager and coach, our team plays in the Collegiate League of Legends championship."},
+  
+  
+  ]
+
+  id=0
+  for(team of teams){
+  var temp = document.getElementsByTagName("template")[0];
+  var clon = temp.content.cloneNode(true);
+  clon.getElementsByTagName
+  clon.getElementById('name').innerHTML=team['Name'];
+  clon.getElementById('game').innerHTML=team['Game'];
+ 
+  clon.getElementById('logo').src=team['LOGO'];
+  var pop = document.getElementsByTagName("template")[2].content.cloneNode(true);
+  clon.getElementById('more').dataset.target = "#pop"+id;
+  pop.getElementById('modal-body').innerHTML=team['Description'];
+  clon.getElementById('m').appendChild(pop)
+  clon.getElementById("XXXXX").id="pop"+id
+
+  for(i=0;i<team['Players'].length;i++)
+    {
+      if(team['Players'][i].reserve==true)continue;
+      var avator = document.getElementsByTagName("template")[1].content.cloneNode(true);
+      clon.getElementById('avators').appendChild(avator)
+      icon=clon.getElementById('X')
+      icon.id="player"+i;
+      icon.title=team['Players'][i].name;
+      
+    }
+  document.getElementById('team_container').appendChild(clon)
+  id++
+  }
+</script>
+
 
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
