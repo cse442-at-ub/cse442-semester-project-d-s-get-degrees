@@ -1,7 +1,11 @@
-from flask import Blueprint, render_template, send_from_directory
+from flask import Blueprint, render_template, send_from_directory,request
 from flask_login import login_required, current_user
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
+import time
+import os
+import glob
+import json
 main = Blueprint('main', __name__)
 
 
@@ -10,9 +14,17 @@ def index():
     return render_template("index.html")
 
 @main.route('/css/<path:path>')
-def send_js(path):
+def send_css(path):
     return send_from_directory('../frontend/css', path)
 
+@main.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('../frontend/js', path)
+
+@main.route('/blogs/<path:path>')
+def send_blog(path):
+    file = open("blogs/"+path, "r") 
+    return file.read()
 
 @main.route('/images/<path:path>')
 def send_images(path):
@@ -27,9 +39,22 @@ def send_favicon():
 def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
+@main.route('/sendpost', methods = ['POST'])
+def save_post():
+    jsdata = request.form['javascript_data']
+    print(jsdata)
+    if(not os.path.exists("blogs/")):
+        os.mkdir("blogs/") 
+    f= open("blogs/"+str(int(time.time()))+".md","w+")
+    f.write(jsdata)
+    f.close()
+    return jsdata
 
-
-
+@main.route('/getpost')
+def get_post():  
+    mds=glob.glob("blogs/*.md")
+    print(mds)
+    return json.dumps(reversed(mds))
 
 @main.route('/profile')
 @login_required
