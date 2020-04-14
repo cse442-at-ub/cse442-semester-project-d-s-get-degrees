@@ -27,7 +27,7 @@ function GetPosts()
 
     $.get("/getpost",function(data, status){
         data=JSON.parse(data)
-        for(d of data)
+        for(d of data.reverse())
         {
             GetPost(d)
         }
