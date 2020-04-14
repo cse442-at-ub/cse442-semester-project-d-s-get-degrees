@@ -4,156 +4,54 @@
   <div class="container">
   <div id="team_container" class="row mb-2">
 
-    <template>
+    {% for team in teams %}
+
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div id="m" class="col p-4 d-flex flex-column position-static">
-          <strong id="game" class="d-inline-block mb-2 text-primary">Counter Strike</strong>
-          <h3 id="name" class="mb-0">UB CSGO</h3>
+          <strong id="game" class="d-inline-block mb-2 text-primary">{{team.game}}</strong>
+          <h3 id="name" class="mb-0">{{team.name}}</h3>
           <div class="mb-1 text-muted"></div>
           <p class="card-text mb-auto"></p>
 
-          <div id="avators"class="row ml-0 tooltip-demo"></div>
-          <div class="ml-2 row">
-          <a id="more" type="button"  data-toggle="modal" data-target="#exampleModalLong"  class="mt-3 btn btn-primary text-light">More</a>
+          <div id="avators"class="row ml-0 tooltip-demo">
+            {% for player in team.players.split(",") %}
+            <img id="X" class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg"
+                 preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
+                 data-toggle="tooltip" data-placement="bottom" title="{{player}}"></img>
+            {% endfor %}
           </div>
+          <div class="ml-2 row">
+            <a id="more" type="button"  data-toggle="modal" data-target="#pop{{team.id}}"  class="mt-3 btn btn-primary text-light">More</a>
+          </div>
+
+          <div class="modal fade" id="pop{{team.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Team Detail</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div id='modal-body' class="modal-body">{{team.description}}</div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img id='logo' class="bd-placeholder-img" width="250" height="250" src="https://cdn2.iconfinder.com/data/icons/popular-games-1/50/csgo_squircle-512.png" >
+          <img id='logo' class="bd-placeholder-img" width="250" height="250" src="{{team.logo}}" >
         </div>
       </div>
     </div>
-  </template>
 
-  <template>
-    <img id="X" class="bd-placeholder-img rounded-circle" width="40" height="40" src="images/blank-avatar.jpg" 
-    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"
-    data-toggle="tooltip" data-placement="bottom" title="Player 1"></img>
-  </template>
 
-  <template>
-    <div class="modal fade" id="XXXXX" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Team Detail</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div id='modal-body' class="modal-body"></div>
-        </div>
-      </div>
-    </div>
-  </template>
+
+    {% endfor %}
 
 </div>
 </div>
-<script>
-  teams=[
-  {Game:"OverWatch",Name:"Tempest",LOGO:"images/Overwatch.png",Players:[
-    {name:"blank!!",reserve:false},
-    {name:"Kaiwen",reserve:false},
-    {name:"Kev2298",reserve:false},
-    {name:"JustAPotato",reserve:false},
-    {name:"RAYCAL2000",reserve:false},
-    {name:"Darekayen",reserve:false},
-    {name:"iah",reserve:false},
-  ],Description:"Tempest is the main Overwatch team at UB. They are registered at TESPA Collegiate, who are partnered with Blizzard Entertainment, making it the official collegiate organization for Overwatch. "},
-  
-  
-  {Game:"OverWatch",Name:"Circus",LOGO:"images/Overwatch.png",Players:[
-    {name:"DurnisBane",reserve:false},
-    {name:"Kikekomonome",reserve:false},
-    {name:"noctem",reserve:false},
-    {name:"Kantaru",reserve:false},
-    {name:"mom",reserve:false},
-    {name:"KP557",reserve:false},
-    {name:"WeaponTechX",reserve:false},
-    {name:"Amaterasu903",reserve:false},
-    {name:"Colonizer",reserve:false},],
-    Description:"Circus is the second competitive collegiate team for Overwatch. They are also registered for TESPA Collegiate and their captain is DurnisBane."},
-  
-  
-
-  {Game:"OverWatch",Name:"FrostByte",LOGO:"images/Overwatch.png",Players:[
-    {name:"Quel",reserve:false},
-    {name:"Darekayen",reserve:false},
-    {name:"mom",reserve:false},
-    {name:"WeaponTechX",reserve:false},
-    {name:"AlphaDivine",reserve:false},
-    {name:"JustAPotato",reserve:false},
-    {name:"Ruby",reserve:false},
-    {name:"Everknight",reserve:false},],
-    Description:"The last of the Overwatch teams, FrostByte is the intrumeral Overwatch team with Quel as the captain. They’re not registered for any outside tournaments, but they do play in the in-house Buffalo Overwatch League Tournament that occurs every semester."},
-  
-  {Game:"Counter Strike",Name:"UB CSGO",LOGO:"images/CSGO.png",
-  Players:[
-    {name:"eXploZioNz",reserve:false},
-    {name:"Inject",reserve:false},
-    {name:"YC",reserve:false},
-    {name:"iCherios",reserve:false},
-    {name:"Yoshimar",reserve:false}],
-  Description:"With eXploZioNz as their captain, UB CSGO is the main Counter Strike team representing the University at Buffalo. The team is registered for the Collegiate StarLeague, or CSL."},
-  
-  {Game:"Rainbow Six Siege",Name:"UB Alpha",LOGO:"images/R6.jpg",Players:[
-    {name:"Zigalo",reserve:false},
-    {name:"JsnMomoasHitbox",reserve:false},
-    {name:"Dugan.UB",reserve:false},
-    {name:"InfinitiX.UB",reserve:false},
-    {name:"TamalesRUs",reserve:false},],
-    Description:"UB Alpha is our main roster for Rainbow Six Siege. With Zigalo as their captain, they are registered for both the College Rainbow Six League and the Collegiate Esports Association for Siege."},
-   
-  
-  {Game:"Rainbow Six Siege",Name:"Buffalo Bees",LOGO:"images/R6.jpg",Players:[
-    {name:"locky_Y",reserve:false},
-    {name:"Jase_Plague",reserve:false},
-    {name:"FRosT_ybite",reserve:false},
-    {name:"joeytribbinai9",reserve:false},
-    {name:"levvit",reserve:false},
-    {name:"LazyCouchPotato",reserve:false},],
-    Description:"The Bees are the second collegiate team at UB. locky_Y is the team captain, and although they aren’t registered for any outside tournaments, they are ready to compete."},
-   
-  {Game:"League of Legends",Name:"UB Esports",LOGO:"images/LOL.png",Players:[
-    {name:"Seet",reserve:false},
-    {name:"IceSnowClever",reserve:false},
-    {name:"Ghoulster",reserve:false},
-    {name:"LetMeCryARiven",reserve:false},
-    {name:"Oriku",reserve:false},],
-    Description:"Our League of Legends team goes under the name UB Esports. Headed by Seet as the team captain and Sora 10 as the manager and coach, our team plays in the Collegiate League of Legends championship."},
-  
-  
-  ]
-
-  id=0
-  for(team of teams){
-  var temp = document.getElementsByTagName("template")[0];
-  var clon = temp.content.cloneNode(true);
-  clon.getElementsByTagName
-  clon.getElementById('name').innerHTML=team['Name'];
-  clon.getElementById('game').innerHTML=team['Game'];
- 
-  clon.getElementById('logo').src=team['LOGO'];
-  var pop = document.getElementsByTagName("template")[2].content.cloneNode(true);
-  clon.getElementById('more').dataset.target = "#pop"+id;
-  pop.getElementById('modal-body').innerHTML=team['Description'];
-  clon.getElementById('m').appendChild(pop)
-  clon.getElementById("XXXXX").id="pop"+id
-
-  for(i=0;i<team['Players'].length;i++)
-    {
-      if(team['Players'][i].reserve==true)continue;
-      var avator = document.getElementsByTagName("template")[1].content.cloneNode(true);
-      clon.getElementById('avators').appendChild(avator)
-      icon=clon.getElementById('X')
-      icon.id="player"+i;
-      icon.title=team['Players'][i].name;
-      
-    }
-  document.getElementById('team_container').appendChild(clon)
-  id++
-  }
-</script>
 
 
 <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

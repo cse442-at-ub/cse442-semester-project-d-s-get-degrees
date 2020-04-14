@@ -3,8 +3,11 @@ from flask.json import jsonify
 from flask_login import login_required, current_user
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
-from backend.modules.userClub import UserClub
 from backend.modules.club import Club
+from backend.modules.userClub import UserClub
+from backend.modules.team import Team
+
+
 from . import db
 
 main = Blueprint('main', __name__)
@@ -32,6 +35,10 @@ def send_favicon():
 def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
+@main.route('/teams')
+def teams():
+    teams = Team.query.all()
+    return render_template("teams.html", teams = teams , template_folder='../frontend')
 
 @main.route('/profile')
 @login_required
