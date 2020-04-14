@@ -62,7 +62,7 @@ def save_post():
 def get_post():  
     mds=glob.glob("blogs/*.md")
     print(mds)
-    return json.dumps(reversed(mds))
+    return json.dumps(mds)
 
 
 @main.route('/profile')
