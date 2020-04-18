@@ -5,7 +5,8 @@ CREATE TABLE User (
     LastName varchar(255) NOT NULL,
     FirstName varchar(255) NOT NULL,
     Email varchar(255) NOT NULL,
-    ProfilePic varchar(255)
+    ProfilePic varchar(255),
+    Admin INTEGER
 )
 
 CREATE TABLE Event (
