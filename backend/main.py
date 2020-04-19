@@ -71,6 +71,13 @@ def get_post():
     print(mds)
     return json.dumps(mds)
 
+@main.route('/blog')
+def blog():    
+    if current_user.is_authenticated:
+        return render_template('blog.html', admin = current_user.admin)
+    else:
+        return render_template('blog.html', admin = 0)
+
 
 @main.route('/profile')
 @login_required
