@@ -1,5 +1,5 @@
 
-from flask import Blueprint, render_template, send_from_directory, request
+from flask import Blueprint, render_template, send_from_directory, request, redirect
 from flask.json import jsonify
 from flask_login import login_required, current_user
 from backend.modules.event import Event
@@ -15,6 +15,7 @@ import time
 import os
 import glob
 import json
+from flask.helpers import url_for
 
 main = Blueprint('main', __name__)
 
@@ -123,3 +124,14 @@ def clubs():
         userClub = UserClub.query.filter_by(userID = current_user.get_id())
 
         return render_template('clubs.html', clubs = clubs, userClub = userClub, otherButton = True)
+
+
+@main.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        return redirect(url_for('search'))
+
+    else: # if request.method == 'GET'
+        searchText = request.args['searchText']
+        # make pings to database here
+        return render_template('search.html')
