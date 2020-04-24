@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
 {% block head %}
-    {{ super() }}
-    <script>
-        function update_roster(players) {
-            $(document).ready(function() {
+  <script>
+    function update_roster(players) {
+      $(document).ready(function() {
 
-            $.ajax({
-                type : 'POST',
-                dataType : 'json',
-                url : '/teams',
-                contentType : 'application/json;charset=UTF-8',
-                data : JSON.stringify({ 'teamPlayers' : players })
-            })
+      $.ajax({
+          type : 'POST',
+          dataType : 'json',
+          url : '/teams',
+          contentType : 'application/json;charset=UTF-8',
+          data : JSON.stringify({ 'teamPlayers' : players })
+      })
 
-            
-        }
-    </script>
+      
+      }
+    }
+  </script>
 {% endblock %}
 
 {% block content %}
