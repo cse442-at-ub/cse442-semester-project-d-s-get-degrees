@@ -7,6 +7,10 @@ from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
 from backend.modules.userClub import UserClub
 from backend.modules.team import Team
+from backend.modules.tag import Tag
+from backend.modules.tagClub import TagClub
+from backend.modules.tagEvent import TagEvent
+from backend.modules.tagTeam import TagTeam
 
 
 from . import db
