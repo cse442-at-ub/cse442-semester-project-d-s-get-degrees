@@ -10,4 +10,3 @@ class User(UserMixin, db.Model):
     lastName = db.Column(db.String(255))
     profilePic = db.Column(db.String(255))
     admin = db.Column(db.Integer)
-    

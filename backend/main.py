@@ -1,4 +1,3 @@
-
 from flask import Blueprint, render_template, send_from_directory, request
 from flask.json import jsonify
 from flask_login import login_required, current_user
@@ -71,12 +70,7 @@ def get_post():
     print(mds)
     return json.dumps(mds)
 
-@main.route('/blog')
-def blog():    
-    if current_user.is_authenticated:
-        return render_template('blog.html', admin = current_user.admin)
-    else:
-        return render_template('blog.html', admin = 0)
+
 
 
 @main.route('/profile')
@@ -86,8 +80,7 @@ def profile():
     userEvents = UserEvent.query.filter_by(userID = current_user.id)
     clubs = []
     events = []
-    # possible bug, what happens when multiple users register for multiple events or clubs?
-    # Future make python object and have dict. be of type object
+
     for club in userClubs:
         clubs.append(Club.query.filter_by(id = club.clubID).first())
     for event in userEvents:
