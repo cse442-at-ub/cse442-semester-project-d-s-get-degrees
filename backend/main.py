@@ -1,11 +1,14 @@
 from flask import Blueprint, render_template, send_from_directory, request
 from flask.json import jsonify
 from flask_login import login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
 from backend.modules.userClub import UserClub
 from backend.modules.team import Team
+from backend.modules.user import User
+from backend.modules.authorization import logout
 
 
 from . import db
@@ -70,7 +73,24 @@ def get_post():
     print(mds)
     return json.dumps(mds)
 
+@main.route('/edit', methods=['POST'])
+def edit():
+    email = request.form.get('email')
+    firstName = request.form.get('firstName')
+    lastName = request.form.get('lastName')
+    password = request.form.get('password')
+    user = User.query.filter(User.id == current_user.id).first()
 
+    if user:
+        user.firstName=firstName
+        user.lastName=lastName
+        user.email=email
+        user.password=generate_password_hash(password, method='sha256')
+        db.session.commit()
+        return logout()
+
+    else:
+        return profile()
 
 
 @main.route('/profile')
