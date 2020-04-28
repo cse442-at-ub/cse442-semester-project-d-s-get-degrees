@@ -140,14 +140,21 @@ def search():
         text = "%{}%".format(searchText)
         tag = Tag.query.filter(Tag.name.like(text)).first()
 
-        if tag:
-            tagClub = TagClub.query.filter(TagClub.tagID == tag.id)
-            tagEvent = TagEvent.query.filter(TagEvent.tagID == tag.id)
-            tagTeam = TagTeam.query.filter(TagTeam.tagID == tag.id)
+        clubs=[]
+        events=[]
+        teams=[]
 
-            clubs = Club.query.filter(Club.id == tagClub.clubID).first()
-            events = Event.query.filter(Event.id == tagEvent.eventID).first()
-            teams = Team.query.filter(Team.id == tagTeam.teamID).first()
+        if tag:
+            tagClubs = TagClub.query.filter(TagClub.tagID == tag.id)
+            tagEvents = TagEvent.query.filter(TagEvent.tagID == tag.id)
+            tagTeams = TagTeam.query.filter(TagTeam.tagID == tag.id)
+
+            for tagClub in tagClubs:
+                clubs.append(Club.query.filter(Club.id == tagClub.clubID).first())
+            for tagEvent in tagEvents:
+                events.append(Event.query.filter(Event.id == tagEvent.eventID).first())
+            for tagTeam in tagTeams:
+                teams.append(Team.query.filter(Team.id == tagTeam.teamID).first())
 
             return render_template('search.html', clubs = clubs, events = events, teams = teams)
 
