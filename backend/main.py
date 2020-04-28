@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template, send_from_directory, request, redirect
 from flask.json import jsonify
 from flask_login import login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from backend.modules.event import Event
 from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
@@ -76,12 +77,24 @@ def get_post():
     print(mds)
     return json.dumps(mds)
 
-@main.route('/blog')
-def blog():    
-    if current_user.is_authenticated:
-        return render_template('blog.html', admin = current_user.admin)
+@main.route('/edit', methods=['POST'])
+def edit():
+    email = request.form.get('email')
+    firstName = request.form.get('firstName')
+    lastName = request.form.get('lastName')
+    password = request.form.get('password')
+    user = User.query.filter(User.id == current_user.id).first()
+
+    if user:
+        user.firstName=firstName
+        user.lastName=lastName
+        user.email=email
+        user.password=generate_password_hash(password, method='sha256')
+        db.session.commit()
+        return logout()
+
     else:
-        return render_template('blog.html', admin = 0)
+        return profile()
 
 
 @main.route('/profile')
@@ -91,8 +104,7 @@ def profile():
     userEvents = UserEvent.query.filter_by(userID = current_user.id)
     clubs = []
     events = []
-    # possible bug, what happens when multiple users register for multiple events or clubs?
-    # Future make python object and have dict. be of type object
+
     for club in userClubs:
         clubs.append(Club.query.filter_by(id = club.clubID).first())
     for event in userEvents:
