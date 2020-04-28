@@ -137,5 +137,19 @@ def search():
 
     else: # if request.method == 'GET'
         searchText = request.args['searchText']
-        # make pings to database here
-        return render_template('search.html')
+        text = "%{}%".format(searchText)
+        tag = Tag.query.filter(Tag.name.like(text)).first()
+
+        if tag:
+            tagClub = TagClub.query.filter(TagClub.tagID == tag.id)
+            tagEvent = TagEvent.query.filter(TagEvent.tagID == tag.id)
+            tagTeam = TagTeam.query.filter(TagTeam.tagID == tag.id)
+
+            clubs = Club.query.filter(Club.id == tagClub.clubID).first()
+            events = Event.query.filter(Event.id == tagEvent.eventID).first()
+            teams = Team.query.filter(Team.id == tagTeam.teamID).first()
+
+            return render_template('search.html', clubs = clubs, events = events, teams = teams)
+
+        else:
+            return render_template('search.html', clubs = clubs, events = events, teams = teams)
