@@ -189,3 +189,7 @@ def search():
 
         else:
             return render_template('search.html', clubs = clubs, events = events, teams = teams)
+
+@main.route('/history', methods=['GET'])
+def history():
+    return render_template('history.html')
