@@ -2,7 +2,7 @@
 
 {% block head %}
   <script>
-    function update_roster(players) {
+    function update_roster(id, players) {
       $(document).ready(function() {
 
       $.ajax({
@@ -14,7 +14,7 @@
       })
 
       
-      }
+      })
     }
   </script>
 {% endblock %}
@@ -71,8 +71,15 @@
                   </button>
                 </div>
                 <div id='modal-body' contenteditable="true" class="modal-body">{{team.players}}</div>
+                  <script>
+                    var roster = document.getElementById('roster');
+                    var button = document.getElementById('update');
+                    button.addEventListener(onclick, function(){
+                      localStorage.setItem('roster', this.innerHTML);
+                    })
+                  </script>
                 <div class="ml-2 row">
-                  <a id="update" type="button"  data-toggle="modal" data-target="{{team.players}}"  class="mt-3 btn btn-primary text-light" onclick="update_roster()">Update</a>
+                  <a id="update" type="button"  data-toggle="modal" data-target="{{team.players}}"  class="mt-3 btn btn-primary text-light" onclick="update_roster('{{team.id}}', document.getElementById('roster').innerHTML)">Update</a>
                 </div>
                 <script>
                   
