@@ -12,7 +12,8 @@ from backend.modules.tag import Tag
 from backend.modules.tagClub import TagClub
 from backend.modules.tagEvent import TagEvent
 from backend.modules.tagTeam import TagTeam
-
+from backend.modules.user import User
+from backend.modules.authorization import logout
 
 from . import db
 
