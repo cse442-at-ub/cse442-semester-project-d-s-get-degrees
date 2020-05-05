@@ -82,17 +82,14 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+
                 <div class="p-4 row">
                   <div class="">
                   <h2 for="teamOption">Team:</h2>
                   <select id="teamOption" class="custom-select">
-                    <option value = 2>Tempest</option>
-                    <option value = 3>Circus</option>
-                    <option value = 4>FrostByte</option>
-                    <option value = 5>UB CSGO</option>
-                    <option value = 6>UB Alpha</option>
-                    <option value = 7>Buffalo Bees</option>
-                    <option value = 8>UB Esports (LOL)</option>
+                    {% for team in teams %}
+                    <option value = {{team.id}}>{{team.name}}</option>
+                  {% endfor %}
                   </select>
 
 
