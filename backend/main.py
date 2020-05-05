@@ -1,5 +1,5 @@
 
-from flask import Blueprint, render_template, send_from_directory, request
+from flask import Blueprint, render_template, send_from_directory, request, redirect
 from flask.json import jsonify
 from flask_login import login_required, current_user
 from backend.modules.event import Event
@@ -7,7 +7,13 @@ from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
 from backend.modules.userClub import UserClub
 from backend.modules.team import Team
+
 import re
+from backend.modules.tag import Tag
+from backend.modules.tagClub import TagClub
+from backend.modules.tagEvent import TagEvent
+from backend.modules.tagTeam import TagTeam
+
 
 from . import db
 
@@ -15,6 +21,7 @@ import time
 import os
 import glob
 import json
+from flask.helpers import url_for
 
 main = Blueprint('main', __name__)
 
@@ -133,3 +140,35 @@ def clubs():
         userClub = UserClub.query.filter_by(userID = current_user.get_id())
 
         return render_template('clubs.html', clubs = clubs, userClub = userClub, otherButton = True)
+
+
+@main.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        return redirect(url_for('search'))
+
+    else: # if request.method == 'GET'
+        searchText = request.args['searchText']
+        text = "%{}%".format(searchText)
+        tag = Tag.query.filter(Tag.name.like(text)).first()
+
+        clubs=[]
+        events=[]
+        teams=[]
+
+        if tag:
+            tagClubs = TagClub.query.filter(TagClub.tagID == tag.id)
+            tagEvents = TagEvent.query.filter(TagEvent.tagID == tag.id)
+            tagTeams = TagTeam.query.filter(TagTeam.tagID == tag.id)
+
+            for tagClub in tagClubs:
+                clubs.append(Club.query.filter(Club.id == tagClub.clubID).first())
+            for tagEvent in tagEvents:
+                events.append(Event.query.filter(Event.id == tagEvent.eventID).first())
+            for tagTeam in tagTeams:
+                teams.append(Team.query.filter(Team.id == tagTeam.teamID).first())
+
+            return render_template('search.html', clubs = clubs, events = events, teams = teams)
+
+        else:
+            return render_template('search.html', clubs = clubs, events = events, teams = teams)

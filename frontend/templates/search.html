@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{ super() }}
+    <script>
+
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Clubs</h1>
+            <p class="lead my-3"></p>
+            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
+        </div>
+    </div>
+
+    {% for club in clubs %}
+
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" src="{{club.image}}"
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/></img>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0"> {{ club.name }} </h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto"> {{ club.description }}</p>
+                </div>
+            </div>
+        </div>
+    
+    {% endfor %}
+
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Teams</h1>
+            <p class="lead my-3"></p>
+            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
+        </div>
+    </div>
+
+    {% for team in teams %}
+        
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" src="{{team.logo}}"
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/></img>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0"> {{ team.name }} </h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto"> {{ team.description }}</p>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Events</h1>
+            <p class="lead my-3"></p>
+            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
+        </div>
+    </div>
+
+    {% for event in events %}
+        
+        <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-auto d-none d-lg-block">
+                    <img class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" src="{{event.image}}"
+                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                    <rect width="100%" height="100%" fill="#55595c"/></img>
+                </div>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <h3 class="mb-0"> {{ event.title }} </h3>
+                    <div class="mb-1 text-muted"></div>
+                    <p class="card-text mb-auto"> {{ event.description }}</p>
+                </div>
+            </div>
+        </div>
+    
+    {% endfor %}
+
+
+{% endblock %}
