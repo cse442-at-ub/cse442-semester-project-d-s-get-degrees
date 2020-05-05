@@ -8,11 +8,14 @@ from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
 from backend.modules.userClub import UserClub
 from backend.modules.team import Team
+
+import re
 from backend.modules.tag import Tag
 from backend.modules.tagClub import TagClub
 from backend.modules.tagEvent import TagEvent
 from backend.modules.tagTeam import TagTeam
-
+from backend.modules.user import User
+from backend.modules.authorization import logout
 
 from . import db
 
@@ -55,21 +58,41 @@ def send_favicon():
 def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
-@main.route('/teams')
+@main.route('/teams', methods=['GET', 'POST'])
 def teams():
-    teams = Team.query.all()
-    return render_template("teams.html", teams = teams , template_folder='../frontend')
+    if request.method == "GET":
+        teams = Team.query.all()
+        return render_template("teams.html", teams = teams , template_folder='../frontend')
+    else:
+        teamID = request.json['teamID']
+        newRoster = request.json['newRoster']
+        print("team ID: " + teamID)
+        print("New Roster: " + newRoster)
+        team = Team.query.filter_by(id = teamID).first()
+        team.players = newRoster
+        db.session.commit()
+        return jsonify({'message' : 'roster updated'})
 
 @main.route('/sendpost', methods = ['POST'])
 def save_post():
-    jsdata = request.form['javascript_data']
+    data = request.form['javascript_data']
+    hashtags=re.findall(r'\B(\#[a-zA-Z]+\b)(?!;)',data)
+    print(hashtags)
+    for ht in hashtags:
+        data=data.replace(ht,"["+ht+"](/blog?tag="+ht.replace('#','')+")")
+
+    jsdata={
+        "str":data,
+        "tags":hashtags
+    }
     print(jsdata)
+    js=json.dumps(jsdata)
     if(not os.path.exists("blogs/")):
         os.mkdir("blogs/") 
     f= open("blogs/"+str(int(time.time()))+".md","w+")
-    f.write(jsdata)
+    f.write(js)
     f.close()
-    return jsdata
+    return js
 
 @main.route('/getpost')
 def get_post():  
@@ -189,3 +212,7 @@ def search():
 
         else:
             return render_template('search.html', clubs = clubs, events = events, teams = teams)
+
+@main.route('/history', methods=['GET'])
+def history():
+    return render_template('history.html')
