@@ -49,10 +49,20 @@ def send_favicon():
 def route(path):
     return render_template(path+".html", template_folder='../frontend')
 
-@main.route('/teams')
+@main.route('/teams', methods=['GET', 'POST'])
 def teams():
-    teams = Team.query.all()
-    return render_template("teams.html", teams = teams , template_folder='../frontend')
+    if request.method == "GET":
+        teams = Team.query.all()
+        return render_template("teams.html", teams = teams , template_folder='../frontend')
+    else:
+        teamID = request.json['teamID']
+        newRoster = request.json['newRoster']
+        print("team ID: " + teamID)
+        print("New Roster: " + newRoster)
+        team = Team.query.filter_by(id = teamID).first()
+        team.players = newRoster
+        db.session.commit()
+        return jsonify({'message' : 'roster updated'})
 
 @main.route('/sendpost', methods = ['POST'])
 def save_post():
