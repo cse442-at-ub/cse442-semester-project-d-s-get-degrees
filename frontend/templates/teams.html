@@ -78,20 +78,18 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                  <div id='modal-body' class="modal-body">
                   <label for="teamOption">Team:</label>
                   <select id="teamOption">
-                    <option value = 2>Tempest</option>
-                    <option value = 3>Circus</option>
-                    <option value = 4>FrostByte</option>
-                    <option value = 5>UB CSGO</option>
-                    <option value = 6>UB Alpha</option>
-                    <option value = 7>Buffalo Bees</option>
-                    <option value = 8>UB Esports (LOL)</option>
+                    {% for team in teams %}
+                      <option value = {{team.id}}>{{team.name}}</option>
+                    {% endfor %}
                   </select>
 
                   <label for="changes">New Roster:</label>
                   <input type="text", id="changes">
-                  <button id="update" type="button" class="close" data-dismiss="modal" aria-label="Close", onclick="saveInput()"> Update
+                    <button id="update" type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="saveInput()"> Update</button>
+                  </div>
                 <script>
                   function saveInput(){
                     var idTeam = document.getElementById('teamOption').value;
