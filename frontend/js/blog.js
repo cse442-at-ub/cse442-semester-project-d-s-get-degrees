@@ -29,8 +29,20 @@ function GetPost(path)
             deleteBtn.id=''
         }
 
-        // containner.innerHTML+="<div class='containner border p-4 mt-3 bg-light rounded '>"+marked(data)+"</div>"
-        console.log(marked(data))
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const page_type = urlParams.get('tag')
+        data=JSON.parse(data)
+        console.log(data)
+        console.log(data["tags"])
+        if(page_type==null||data["tags"].includes("#"+page_type)){
+        console.log(data["str"])
+        containner.innerHTML+="<div class='containner border p-4 mt-3 bg-light rounded '>"+marked(data["str"])+"</div>"
+        console.log(data)
+
+        console.log(marked(data["str"]))
+        }
+
         // alert("Data: " + data + "\nStatus: " + status);
     });
 }

@@ -8,6 +8,8 @@ from backend.modules.userEvent import UserEvent
 from backend.modules.club import Club
 from backend.modules.userClub import UserClub
 from backend.modules.team import Team
+
+import re
 from backend.modules.tag import Tag
 from backend.modules.tagClub import TagClub
 from backend.modules.tagEvent import TagEvent
@@ -73,14 +75,24 @@ def teams():
 
 @main.route('/sendpost', methods = ['POST'])
 def save_post():
-    jsdata = request.form['javascript_data']
+    data = request.form['javascript_data']
+    hashtags=re.findall(r'\B(\#[a-zA-Z]+\b)(?!;)',data)
+    print(hashtags)
+    for ht in hashtags:
+        data=data.replace(ht,"["+ht+"](/blog?tag="+ht.replace('#','')+")")
+
+    jsdata={
+        "str":data,
+        "tags":hashtags
+    }
     print(jsdata)
+    js=json.dumps(jsdata)
     if(not os.path.exists("blogs/")):
         os.mkdir("blogs/") 
     f= open("blogs/"+str(int(time.time()))+".md","w+")
-    f.write(jsdata)
+    f.write(js)
     f.close()
-    return jsdata
+    return js
 
 @main.route('/getpost')
 def get_post():  

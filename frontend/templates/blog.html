@@ -16,7 +16,9 @@
 <script src="js/blog.js"></script>
 <link rel="stylesheet" href="js/bootstrap-markdown.min.css" />
 <link rel="stylesheet" href="js/style.css" />
+
 {% if current_user.is_authenticated and current_user.admin==1 %}
+
 <div  class="container">
 
     <div class=" mt-4 col overflow-auto">
@@ -38,8 +40,8 @@
         </div>
     </div>
 </div>
-{% endif %}
 
+{% endif %}
 
 
 <div class="container">
