@@ -8,15 +8,18 @@
 {% endblock %}
 
 
-{% block content %}
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Clubs</h1>
-            <p class="lead my-3"></p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
-        </div>
-    </div>
 
+{% block content %}
+
+<div class="container">
+    {% if clubs|length == 0  and teams|length == 0  and events|length == 0 %}
+    <h1 class="pl-3 ">No search results</h1>
+    <div style="height: 70vh;"></div>
+    {% endif %}
+
+    {% if clubs|length > 0 %}
+    <h1 class="pl-3 ">Clubs</h1>
+    {% endif %}
     {% for club in clubs %}
 
         <div class="col-md-12">
@@ -36,13 +39,9 @@
     
     {% endfor %}
 
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Teams</h1>
-            <p class="lead my-3"></p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
-        </div>
-    </div>
+    {% if teams|length > 0 %}
+    <h1 class="pl-3 ">Teams</h1>
+    {% endif %}
 
     {% for team in teams %}
         
@@ -63,13 +62,9 @@
 
     {% endfor %}
 
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Events</h1>
-            <p class="lead my-3"></p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold"></a></p>
-        </div>
-    </div>
+    {% if events|length > 0 %}
+    <h1 class="pl-3 ">Events</h1>
+    {% endif %}
 
     {% for event in events %}
         
@@ -90,5 +85,5 @@
     
     {% endfor %}
 
-
+</div>
 {% endblock %}

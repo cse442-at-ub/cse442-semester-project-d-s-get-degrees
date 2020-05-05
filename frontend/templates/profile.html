@@ -13,8 +13,8 @@
           <h1>Hi, {{ name }}</h1>
           <p class="lead text-muted">Welcome to your personal page.</p>
 
-          <div id="edit" class="ml-2 row" >
-            <a type="button"  onclick="document.getElementById('editProfile').style.display='block';document.getElementById('edit').style.display='none';"  class="mt-3 btn btn-primary text-light">Edit my profile</a>
+          <div id="edit" class="ml-2 text-center m-3" >
+            <a type="button"  onclick="document.getElementById('editProfile').style.display='block';document.getElementById('edit').style.display='none';"  class="mt-3 btn-lg btn-primary text-light">Edit my profile</a>
           </div>
 
 
@@ -67,7 +67,7 @@
 
 
             <hr class="mb-4">
-
+            
 
             <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Change</button>
             <a class="btn btn-secondary btn-block" href="profile" >Cancel</a>
@@ -89,8 +89,9 @@
 
 
 
-
+          {% if events|length >0 %}
           <h2>Events</h2>
+          {% endif%}
           <div class="row">
 
             {% for e in events%}
@@ -114,8 +115,9 @@
             {% endfor %}
 
           </div>
-
+          {% if clubs|length >0 %}
           <h2>Clubs</h2>
+          {% endif%}
           <div class="row">
 
             {% for c in clubs %}
@@ -142,6 +144,7 @@
 
         </div>
       </section>
+      <div style="height: 50vh;"></div>
 </div>   
 </main>
 
