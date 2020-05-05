@@ -16,6 +16,9 @@
 <script src="js/blog.js"></script>
 <link rel="stylesheet" href="js/bootstrap-markdown.min.css" />
 <link rel="stylesheet" href="js/style.css" />
+
+{% if current_user.is_authenticated and current_user.admin==1 %}
+
 <div  class="container">
 
     <div class=" mt-4 col overflow-auto">
@@ -38,6 +41,8 @@
     </div>
 </div>
 
+{% endif %}
+
 
 <div class="container">
 <div id='postlist' class="m-2 container">
@@ -47,4 +52,23 @@
 <script>
     GetPosts();
 </script>
+
+<template>
+    <div class="card-deck mb-3 text-left">
+      <div class="card mb-4 box-shadow">  
+        <div class="card-header">
+          <div class="row justify-content-between">
+            <h4 class="ml-3 my-0 font-weight-normal" id='name'></h4>
+            
+            {% if current_user.is_authenticated and admin == 1 %}
+            <button type="button" id='delete' class="btn btn-danger">Delete</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="card-body" id='content'>
+        </div>
+      </div>
+    </div>
+</template>
+
 {% endblock %}
