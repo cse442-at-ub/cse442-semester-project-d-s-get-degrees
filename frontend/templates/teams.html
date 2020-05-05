@@ -45,7 +45,7 @@
           </div>
         {% if current_user.is_authenticated and current_user.admin==1 %}
           <div class="ml-2 row">
-            <a id="edit" type="button"  data-toggle="modal" data-target="#pop{{team.players}}"  class="mt-3 btn btn-primary text-light">Edit Roster</a>
+            <a id="edit" type="button"  data-toggle="modal" data-target="#pop{{team.id}}edit"  class="mt-3 btn btn-primary text-light">Edit Roster</a>
           </div>
         {% endif %}
 
@@ -63,7 +63,7 @@
             </div>
           </div>
         
-          <div class="modal fade" id="pop{{team.players}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal fade" id="pop{{team.id}}edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -72,14 +72,8 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div id='modal-body' contenteditable="true" class="modal-body">{{team.players}}</div>
+                <div id='roster' contenteditable="true" class="modal-body">{{team.players}}</div>
                   <script>
-                    var roster = document.getElementById('roster');
-                    var button = document.getElementById('update');
-                    button.addEventListener(onclick, function(){
-                      localStorage.setItem('roster', this.innerHTML);
-                    })
-                  </script>
                 <div class="ml-2 row">
                   <a id="update" type="button"  data-toggle="modal" data-target="{{team.players}}"  class="mt-3 btn btn-primary text-light" onclick="update_roster('{{team.id}}', document.getElementById('roster').innerHTML)">Update</a>
                 </div>
