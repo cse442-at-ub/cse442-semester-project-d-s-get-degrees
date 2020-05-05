@@ -20,6 +20,12 @@
 {% endblock %}
 
 {% block content %}
+    {% if current_user.is_authenticated and current_user.admin==1 %}
+          <div class="ml-2 row">
+            <a id="edit" type="button"  data-toggle="modal" data-target="#pop{{team.id}}edit"  class="mt-3 btn btn-primary text-light">Edit Roster</a>
+          </div>
+    {% endif %}
+
   <div class="container">
   <div id="team_container" class="row mb-2">
 
@@ -43,11 +49,7 @@
           <div class="ml-2 row">
             <a id="more" type="button"  data-toggle="modal" data-target="#pop{{team.id}}"  class="mt-3 btn btn-primary text-light">More</a>
           </div>
-        {% if current_user.is_authenticated and current_user.admin==1 %}
-          <div class="ml-2 row">
-            <a id="edit" type="button"  data-toggle="modal" data-target="#pop{{team.id}}edit"  class="mt-3 btn btn-primary text-light">Edit Roster</a>
-          </div>
-        {% endif %}
+        
 
           <div class="modal fade" id="pop{{team.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -72,13 +74,26 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div id='roster' contenteditable="true" class="modal-body">{{team.players}}</div>
-                  <script>
-                <div class="ml-2 row">
-                  <a id="update" type="button"  data-toggle="modal" data-target="{{team.players}}"  class="mt-3 btn btn-primary text-light" onclick="update_roster('{{team.id}}', document.getElementById('roster').innerHTML)">Update</a>
-                </div>
+                  <label for="teamOption">Team:</label>
+                  <select id="teamOption">
+                    <option value = 2>Tempest</option>
+                    <option value = 3>Circus</option>
+                    <option value = 4>FrostByte</option>
+                    <option value = 5>UB CSGO</option>
+                    <option value = 6>UB Alpha</option>
+                    <option value = 7>Buffalo Bees</option>
+                    <option value = 8>UB Esports (LOL)</option>
+                  </select>
+
+                  <label for="changes">New Roster:</label>
+                  <input type="text", id="changes">
+                  <button id="update" type="button" class="close" data-dismiss="modal" aria-label="Close", onclick="saveInput()"> Update
                 <script>
-                  
+                  function saveInput(){
+                    var idTeam = document.getElementById('teamOption').value;
+                    var changesTeam = document.getElementById('changes').value;
+                    update_roster(idTeam, changesTeam);
+                  }
                 </script>
               </div>
             </div>
