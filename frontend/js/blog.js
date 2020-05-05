@@ -16,8 +16,15 @@ function GetPost(path)
 
     containner=document.getElementById('postlist')
     $.get("/"+path,function(data, status){
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const page_type = urlParams.get('tag')
+        data=JSON.parse(data)
+
+        if(page_type==null||data["tags"].includes("#"+page_type)){
         var clon = document.getElementsByTagName("template")[0].content.cloneNode(true);
-        clon.getElementById('content').innerHTML=marked(data);
+        clon.getElementById('content').innerHTML=marked(data["str"]);
         clon.getElementById('name').innerHTML="blog";
         containner.appendChild(clon)
         console.log("containner. "+containner)
@@ -29,19 +36,15 @@ function GetPost(path)
             deleteBtn.id=''
         }
 
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const page_type = urlParams.get('tag')
-        data=JSON.parse(data)
-        console.log(data)
-        console.log(data["tags"])
-        if(page_type==null||data["tags"].includes("#"+page_type)){
-        console.log(data["str"])
-        containner.innerHTML+="<div class='containner border p-4 mt-3 bg-light rounded '>"+marked(data["str"])+"</div>"
-        console.log(data)
-
-        console.log(marked(data["str"]))
         }
+
+        
+        // console.log(data["str"])
+        // containner.innerHTML+="<div class='containner border p-4 mt-3 bg-light rounded '>"+marked(data["str"])+"</div>"
+        // console.log(data)
+
+        // console.log(marked(data["str"]))
+        
 
         // alert("Data: " + data + "\nStatus: " + status);
     });
